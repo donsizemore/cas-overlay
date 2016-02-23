@@ -51,16 +51,16 @@
 
                         <input class="btn-submit" name="submit" accesskey="l" value="<spring:message code="screen.welcome.button.login" />" tabindex="4" type="submit" />
                         <input class="btn-reset" name="reset" accesskey="c" value="<spring:message code="screen.welcome.button.clear" />" tabindex="5" type="reset" />
-			<a class="btn-register" href="https://user.iplantcollaborative.org/register/" >Register</a>
+			<a class="btn-register" href="https://user.example.org/register/" >Register</a>
                     </div>
             </form:form>
           </div>
 
           <div class="box fl-panel" id="gray_box">
              <h2>Additional Help?</h2>
-	     <p><a href="http://user.iplantcollaborative.org/reset/request">Need to reset your password?</a></p>
-	     <p><a href="mailto:support@cyverse.org">Contact Support</a></p>
-	     <p><a href="http://ask.iplantcollaborative.org">Other questions?</a></p>
+	     <p><a href="http://user.example.org/reset/request">Need to reset your password?</a></p>
+	     <p><a href="mailto:support@example.org">Contact Support</a></p>
+	     <p><a href="http://ask.example.org">Other questions?</a></p>
           </div>
 
 
