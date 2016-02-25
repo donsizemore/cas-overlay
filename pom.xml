@@ -104,7 +104,7 @@
 
     <properties>
         <apache.httpclient.version>4.3.6</apache.httpclient.version>
-        <cas.version>4.0.1</cas.version>
+        <cas.version>4.1.5</cas.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
