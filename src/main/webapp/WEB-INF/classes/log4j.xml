@@ -33,7 +33,7 @@
     </appender>
 
     <appender name="cas" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="cas.log" />
+        <param name="File" value="/usr/share/tomcat/logs/cas.log" />
         <param name="MaxFileSize" value="512KB" />
         <param name="MaxBackupIndex" value="3" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -56,7 +56,7 @@
 
     <!-- This file appender is used to output aggregated performance statistics -->
     <appender name="fileAppender" class="org.apache.log4j.FileAppender">
-        <param name="File" value="perfStats.log"/>
+        <param name="File" value="/usr/share/tomcat/logs/perfStats.log"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%m%n"/>
         </layout>
@@ -102,7 +102,7 @@
     </logger>
 
     <logger name="org.jasig" additivity="true">
-        <level value="INFO" />
+        <level value="DEBUG" />
         <appender-ref ref="cas" />
     </logger>
 
@@ -117,7 +117,7 @@
         cleartext authentication credentials
     -->
     <logger name="org.jasig.cas.web.flow" additivity="true">
-        <level value="INFO" />
+        <level value="DEBUG" />
         <appender-ref ref="cas" />
     </logger>
 
@@ -126,7 +126,7 @@
       logger to System.out.
     -->
     <root>
-        <level value="ERROR" />
+        <level value="DEBUG" />
         <appender-ref ref="console" />
     </root>
 </log4j:configuration>
