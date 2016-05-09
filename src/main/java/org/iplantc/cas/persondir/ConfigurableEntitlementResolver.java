@@ -161,6 +161,7 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		for (String configuredUid : this.configuredUserIds) {
 			if (configuredUid.equals(uid)) {
 				matched = true;
+				logger.info("matched uid:{}", uid);
 				break;
 			}
 		}
@@ -174,6 +175,7 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		}
 
 		attributes.put("cn", entitlements);
+		logger.info("entitlements:{}", entitlements);
 		return new NamedPersonImpl(uid, attributes);
 
 	}
