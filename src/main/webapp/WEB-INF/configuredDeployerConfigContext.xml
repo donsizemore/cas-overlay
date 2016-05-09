@@ -204,12 +204,12 @@
 			</map>
 		</property>
 		<util:list id="configuredUserIds" value-type="java.lang.String">
-			<value>testde2</value>
-			<value>testde8</value>
+			<value>dls</value>
+			<value>jonc</value>
+			<value>asone</value>
 		</util:list>
 		<util:list id="configuredEntitlements" value-type="java.lang.String">
-			<value>admin_group1</value>
-			<value>admin_group2</value>
+			<value>admin_group</value>
 		</util:list>
 
 
