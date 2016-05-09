@@ -30,6 +30,7 @@ public class ConfigurableEntitlementResolverTest {
 		resolver.setConfiguredUserIds(userNames);
 		IPersonAttributes actual = resolver.getPerson(testuser1);
 		Assert.assertNotNull("Null personAttributes returned", actual);
+		Assert.assertFalse("no attributes", actual.getAttributes().isEmpty());
 
 	}
 

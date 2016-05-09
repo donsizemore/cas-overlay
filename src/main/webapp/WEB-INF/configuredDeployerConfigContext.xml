@@ -196,9 +196,8 @@
 
 	<!-- Retrieves user group membership from LDAP. -->
 	<bean id="groupAttributeRepository"
-		class="org.iplantc.cas.persondir.LdapMultirecordPersonAttributeDao"
-		p:connectionFactory-ref="attrPooledLdapConnectionFactory" p:baseDN="${ldap.groupDn}"
-		p:searchControls-ref="searchControls" p:searchFilter="memberUid={0}">
+		class="org.iplantc.cas.persondir.ConfigurableEntitlementResolver"
+		 p:searchFilter="memberUid={0}">
 		<property name="resultAttributeMapping">
 			<map>
 				<entry key="cn" value="entitlement" />

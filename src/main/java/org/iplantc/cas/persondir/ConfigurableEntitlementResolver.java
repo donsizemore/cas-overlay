@@ -157,8 +157,20 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		final Map<String, List<Object>> attributes = new HashMap<String, List<Object>>();
 		final List<Object> entitlements = new ArrayList<Object>();
 
-		for (String attribute : this.configuredEntitlements) {
-			entitlements.add(attribute);
+		boolean matched = false;
+		for (String configuredUid : this.configuredUserIds) {
+			if (configuredUid.equals(uid)) {
+				matched = true;
+				break;
+			}
+		}
+
+		if (matched) {
+
+			for (String attribute : this.configuredEntitlements) {
+				entitlements.add(attribute);
+			}
+
 		}
 
 		attributes.put("cn", entitlements);
