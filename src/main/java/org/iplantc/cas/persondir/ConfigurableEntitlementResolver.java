@@ -153,6 +153,8 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		Validate.notNull(uid, "uid may not be null.");
 		logger.debug("uid:{}", uid);
 
+		logger.debug("configuredEntitlements at time of getPerson(): {}",
+				this.configuredEntitlements);
 		// Build the map of attributes for the user.
 		final Map<String, List<Object>> attributes = new HashMap<String, List<Object>>();
 		final List<Object> entitlements = new ArrayList<Object>();
@@ -167,16 +169,19 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		}
 
 		if (matched) {
-
+			logger.info("matched!!");
 			for (String attribute : this.configuredEntitlements) {
+				logger.info("adding value:{} to entitlements", attribute);
 				entitlements.add(attribute);
 			}
-
 		}
 
 		attributes.put("cn", entitlements);
 		logger.info("entitlements:{}", entitlements);
-		return new NamedPersonImpl(uid, attributes);
+		logger.info("attributes:{}", attributes);
+		NamedPersonImpl namedPerson = new NamedPersonImpl(uid, attributes);
+		logger.info("namedPerson:{}", namedPerson);
+		return namedPerson;
 
 	}
 
@@ -242,6 +247,7 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 
 	public void setConfiguredEntitlements(List<String> configuredEntitlements) {
 		this.configuredEntitlements = configuredEntitlements;
+		logger.info("configuredEntitlements:{}", configuredEntitlements);
 	}
 
 	/**
