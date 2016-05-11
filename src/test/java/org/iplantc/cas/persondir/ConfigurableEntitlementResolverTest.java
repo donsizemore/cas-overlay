@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.jasig.services.persondir.IPersonAttributes;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ConfigurableEntitlementResolverTest {
 
-	@Test
+	@Ignore
 	public void testGetAdminGroupsGivenUser() {
 
 		String testuser1 = "testuser1";
