@@ -19,6 +19,9 @@ import org.jasig.services.persondir.IPersonAttributeDao;
 import org.jasig.services.persondir.IPersonAttributes;
 import org.jasig.services.persondir.support.MultivaluedPersonAttributeUtils;
 import org.jasig.services.persondir.support.NamedPersonImpl;
+import org.ldaptive.LdapAttribute;
+import org.ldaptive.LdapEntry;
+import org.ldaptive.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -176,9 +179,53 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 
 		attributes.put("cn", entitlements);
 		logger.info("entitlements:{}", entitlements);
-		return new NamedPersonImpl(uid, attributes);
+		return attributesFromSearchResult(uid, attributes);
 
 	}
+	
+	/**
+	 * Converts an LDAP search result to an instance of IPersonAttributes.
+	 *
+	 * @param uid
+	 *            the user ID.
+	 * @param result
+	 *            the LDAP search result.
+	 * @return the IPersonAttributes instance.
+	 */
+	private NamedPersonImpl attributesFromSearchResult(final String uid,
+			final Map<String, List<Object>> result) {
+		logger.debug("found {} results for user {}", result.size(), uid);
+
+		// Quit early if there are no results.
+		if (result.size() == 0) {
+			return null;
+		}
+
+		// Build the map of attributes for the user.
+		final Map<String, List<Object>> attributes = new HashMap<String, List<Object>>();
+		String mappedKey = null;
+		boolean matched = false;
+		for (String key : result.keySet()) {
+			logger.debug("have result key:{}", key);
+			
+			for (String resultKey : resultAttributeMapping.keySet()) {
+				if (resultKey.equals(key)) {
+					for (final String attributeName : resultAttributeMapping
+							.get(resultKey)) {
+						logger.info("mapping: {}", key);
+						logger.info("to result keys:{}", attributeName);
+						attributes.put(attributeName, result.get(key));
+					}
+				}
+			}
+		}
+		
+
+		logger.debug("Attributes: {}", attributes);
+		return new NamedPersonImpl(uid, attributes);
+		
+	}
+
 
 	@Override
 	public Set<String> getPossibleUserAttributeNames() {
