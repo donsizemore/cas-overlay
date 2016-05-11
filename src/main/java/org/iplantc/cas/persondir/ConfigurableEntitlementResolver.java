@@ -19,9 +19,6 @@ import org.jasig.services.persondir.IPersonAttributeDao;
 import org.jasig.services.persondir.IPersonAttributes;
 import org.jasig.services.persondir.support.MultivaluedPersonAttributeUtils;
 import org.jasig.services.persondir.support.NamedPersonImpl;
-import org.ldaptive.LdapAttribute;
-import org.ldaptive.LdapEntry;
-import org.ldaptive.SearchResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -156,6 +153,8 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		Validate.notNull(uid, "uid may not be null.");
 		logger.debug("uid:{}", uid);
 
+		logger.debug("configuredEntitlements at time of getPerson(): {}",
+				this.configuredEntitlements);
 		// Build the map of attributes for the user.
 		final Map<String, List<Object>> attributes = new HashMap<String, List<Object>>();
 		final List<Object> entitlements = new ArrayList<Object>();
@@ -170,11 +169,11 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 		}
 
 		if (matched) {
-
+			logger.info("matched!!");
 			for (String attribute : this.configuredEntitlements) {
+				logger.info("adding value:{} to entitlements", attribute);
 				entitlements.add(attribute);
 			}
-
 		}
 
 		attributes.put("cn", entitlements);
@@ -289,6 +288,7 @@ public class ConfigurableEntitlementResolver implements IPersonAttributeDao {
 
 	public void setConfiguredEntitlements(List<String> configuredEntitlements) {
 		this.configuredEntitlements = configuredEntitlements;
+		logger.info("configuredEntitlements:{}", configuredEntitlements);
 	}
 
 	/**

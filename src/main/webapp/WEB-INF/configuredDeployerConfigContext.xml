@@ -204,8 +204,8 @@
 		</property>
 		<property name="configuredUserIds">
 			<list>
+				<value>dls</value>
 				<value>testde2</value>
-				<value>testde8</value>
 			</list>
 		</property>
 		<property name="configuredEntitlements">
