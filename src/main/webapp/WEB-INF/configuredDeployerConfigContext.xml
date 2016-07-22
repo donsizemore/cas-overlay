@@ -76,7 +76,7 @@
 	<!-- ADD LDAP ATTRIBUTE RELEASE -->
 	<!-- The handler to use for primary authentication. -->
 	<bean id="primaryAuthenticationHandler" class="org.jasig.cas.authentication.LdapAuthenticationHandler"
-		p:principalIdAttribute="uid" c:authenticator-ref="authenticator">
+		p:principalIdAttribute="${ldap.principal.id.attribute}" c:authenticator-ref="authenticator">
 		<property name="principalAttributeMap">
 			<map>
 				<entry key="givenName" value="firstName" />
