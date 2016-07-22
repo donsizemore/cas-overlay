@@ -56,7 +56,11 @@
 
     <!-- This file appender is used to output aggregated performance statistics -->
     <appender name="fileAppender" class="org.apache.log4j.FileAppender">
+<<<<<<< HEAD
         <param name="File" value="/usr/share/tomcat/logs/perfStats.log"/>
+=======
+        <param name="File" value="/home/mconway/temp/logs/perfStats.log"/>
+>>>>>>> origin/master
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%m%n"/>
         </layout>

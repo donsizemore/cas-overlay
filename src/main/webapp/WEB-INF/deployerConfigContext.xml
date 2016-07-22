@@ -243,7 +243,7 @@
         </property>
     </bean>
 
-    <!-- Retrieves user group membership from LDAP. -->
+   <!-- Retrieves user group membership from LDAP. -->
     <bean id="groupAttributeRepository"
           class="org.iplantc.cas.persondir.LdapMultirecordPersonAttributeDao"
           p:connectionFactory-ref="attrPooledLdapConnectionFactory"
