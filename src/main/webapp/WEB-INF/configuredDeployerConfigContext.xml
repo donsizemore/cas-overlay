@@ -194,7 +194,26 @@
 		</property>
 	</bean>
 
-	<!-- Retrieves user group membership from LDAP. -->
+	<!-- 
+	
+	this repo uses gathering based on a group attribute query
+	
+    <bean id="groupAttributeRepository"
+          class="org.iplantc.cas.persondir.LdapMultirecordPersonAttributeDao"
+          p:connectionFactory-ref="attrPooledLdapConnectionFactory"
+          p:baseDN="${ldap.groupDn}"
+          p:searchControls-ref="searchControls"
+          p:searchFilter="memberUid={0}">
+        <property name="resultAttributeMapping">
+            <map>
+                <entry key="cn" value="entitlement" />
+            </map>
+        </property>
+    </bean>
+		
+	 -->
+
+	<!-- Retrieves user group membership from a configured set of user ids TODO: pull this out to an etc file of users -->
 	<bean id="groupAttributeRepository"
 		class="org.iplantc.cas.persondir.ConfigurableEntitlementResolver">
 		<property name="resultAttributeMapping">
@@ -204,8 +223,8 @@
 		</property>
 		<property name="configuredUserIds">
 			<list>
-				<value>dls</value>
-				<value>testde2</value>
+				<value></value>
+				<value></value>
 			</list>
 		</property>
 		<property name="configuredEntitlements">
