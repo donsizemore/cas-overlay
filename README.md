@@ -1,6 +1,6 @@
-# CAS Server Overlay
+# CAS Server Overlay - RENCI
 
-Generates a WAR file for deployment of a CAS server.
+Generates a WAR file for deployment of a CAS server for RENCI AD
 
 ## Configuration Files
 
